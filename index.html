@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="icon" href="https://movimientosumar.es/wp-content/uploads/2023/03/cropped-favicon-1-300x300.png" sizes="32x32" />
+  <link rel="icon" href="https://movimientosumar.es/wp-content/uploads/2023/03/cropped-favicon-1-300x300.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="https://movimientosumar.es/wp-content/uploads/2023/03/cropped-favicon-1-300x300.png" />
+  <meta name="msapplication-TileImage" content="https://movimientosumar.es/wp-content/uploads/2023/03/cropped-favicon-1-300x300.png" />
+  <title>Fundadoras I Asamblea Sumar</title>
+  <style type="text/css">
+    @font-face{font-family:Roboto;font-style:normal;font-weight:300;font-display:fallback;src:url('https://movimientosumar.es/wp-content/themes/moaregenesis/assets/fonts/roboto/roboto-latin-300.woff2') format('woff2');font-stretch:normal;}
+    @font-face{font-family:Roboto;font-style:normal;font-weight:700;font-display:fallback;src:url('https://movimientosumar.es/wp-content/themes/moaregenesis/assets/fonts/roboto/roboto-latin-700.woff2') format('woff2');font-stretch:normal;}
+    @font-face{font-family:Roobert;font-style:normal;font-weight:700;font-display:fallback;src:url('https://movimientosumar.es/wp-content/themes/moaregenesis/assets/fonts/roobert/roobert-bold.woff2') format('woff2');font-stretch:normal;}
+    html {
+      height: 100%;
+    }
+    body {
+      font-family: "Roobert", "Roboto", Arial, sans-serif;
+      margin: 0;
+      min-height: 100%;
+    }
+    .founder {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="founders"></div>
+  <script src="/js/d3-fetch.min.js"></script>
+  <script src="/js/d3-dsv.min.js"></script>
+  <script src="/js/d3-selection.min.js"></script>
+  <script>
+    d3.dsv(",", "/data/founders.csv").then(function(data) {
+      d3.select("#founders")
+        .selectAll("div")
+        .data(data)
+        .enter()
+        .append("div")
+        .attr("class", "founder")
+        .text(function(d) {
+          return d.firstname + " " + d.lastname;
+        });
+    });
+  </script>
+</body>
+</html>
