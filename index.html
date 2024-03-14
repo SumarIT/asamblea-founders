@@ -20,8 +20,14 @@
       margin: 0;
       min-height: 100%;
     }
-    .founder {
+    #founders {
       text-align: center;
+    }
+    .founder {
+      display: inline-block;
+      white-space: pre;
+      margin: 0 7px;
+      font-size: 1.2em;
     }
   </style>
 </head>
@@ -34,7 +40,7 @@
     d3.dsv(",", "data/founders.csv").then(function(data) {
       d3.select("#founders")
         .selectAll("div")
-        .data(data)
+        .data(data.sort((a, b) => a.lastname.localeCompare(b.lastname)))
         .enter()
         .append("div")
         .attr("class", "founder")
