@@ -8,5 +8,5 @@ do
     git commit -m "Actualización automática"
     git push
     echo "waiting..."
-    sleep 3660
+    sleep 1800
 done
