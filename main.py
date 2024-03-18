@@ -48,7 +48,6 @@ def get_people_ids() -> list:
                 continue
             person_id = item["_links"]["osdi:person"]["href"].split("/")[-1]
             people.append(person_id)
-        break
     return people
 
 
